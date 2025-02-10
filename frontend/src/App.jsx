@@ -38,10 +38,10 @@ const App = () => {
     }
   };
   return (
-    <div className="min-h-screen bg-gray-100 grid place-items-center p-4">
-      <div className="w-full max-w-md bg-white rounded-2xl shadow-xl p-6">
-        <h1 className="text-2xl font-bold text-center mb-4">💬 Chat with Groq AI</h1>
-        <div className="h-80 overflow-y-auto border rounded-md p-4 mb-4 bg-gray-50">
+    <div style={{display:'flex',width:"100vw",height:"100vh" ,justifyContent:"center",alignItems:'center'}}>
+      <div style={{backgroundColor:"gray",padding:"20px 20px" , color:"white"}}>
+        <h1 >💬 Chat with <span style={{color:"red"}}>Groq AI</span></h1>
+        <div className="h-80 overflow-y-auto border rounded-md p-4 mb-4 bg-gray-50" style={{textAlign:"center"}}>
           {chat.map((msg, index) => (
             <div
               key={index}
@@ -53,14 +53,17 @@ const App = () => {
             </div>
           ))}
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2" style={{display:'flex', placeItems:'center', justifyContent:"center"}}>
           <input
             type="text"
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             className="flex-1 border rounded-md p-2 outline-none"
             placeholder="Type your message..."
-            onKeyPress={(e) => e.key === 'Enter' && handleSend()}
+            // onKeyPress={(e) => e.key === 'Enter' && handleSend()}
+            onKeyDown={(e) => e.key === 'Enter' && handleSend()}
+            style={{height:"100%" ,padding:"6px 2px"}}
+
           />
           <button
             onClick={handleSend}
